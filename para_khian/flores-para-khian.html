@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti, mi amor ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --pastel-green: #d4e7c5;
+      --soft-yellow: #fef9d7;
+      --accent-yellow: #fcd34d;
+      --text-color: #2d3748;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      background-image: url('fondo_verde.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.3);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .petals-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      opacity: 0.6;
+      animation: fall linear infinite;
+      user-select: none;
+      filter: blur(0.3px);
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% {
+        transform: translateY(105vh) rotate(180deg) translateX(35px);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 35px 25px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      text-align: center;
+      transition: transform 0.3s ease, opacity 0.6s ease;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1.main-title {
+      font-family: 'Caveat', cursive;
+      font-size: 3.8rem;
+      color: #b45309;
+      margin-bottom: 10px;
+    }
+
+    .sub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #4a5568;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #fef08a, #fde047);
+      color: #78350f;
+      border: none;
+      padding: 16px 36px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(251, 191, 36, 0.6);
+    }
+
+    .letter-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2.8rem;
+      color: #92400e;
+      margin-bottom: 15px;
+    }
+
+    .letter-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #334155;
+      text-align: justify;
+      white-space: pre-line;
+      margin-bottom: 20px;
+    }
+
+    .letter-signature {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: #92400e;
+      text-align: right;
+    }
+
+    .photo-item {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: #fafafa;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photo-item img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .photo-caption {
+      font-size: 0.95rem;
+      margin-top: 10px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .three-reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .reason-box {
+      background: rgba(254, 249, 215, 0.7);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid #fef08a;
+    }
+
+    .reason-box h3 {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: #b45309;
+      margin-bottom: 8px;
+    }
+
+    .reason-box p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #475569;
+    }
+
+    .turtles-section {
+      background: linear-gradient(135deg, rgba(212, 231, 197, 0.6), rgba(254, 249, 215, 0.8));
+      border: 2px dashed #a3e635;
+    }
+
+    .turtle-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .secret-section {
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .final-decor {
+      font-size: 2rem;
+      margin: 15px 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      h1.main-title { font-size: 2.8rem; }
+      .letter-title { font-size: 2.2rem; }
+      .card { padding: 25px 18px; }
+      .photo-item img { max-height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="petals-container" id="petals"></div>
+
+  <div class="container">
+
+    <!-- PORTADA -->
+    <section class="card hero" id="hero">
+      <h1 class="main-title">Para ti, mi amor. ♡</h1>
+      <p class="sub-title">Hoy quiero regalarte algo especial... algo pequeño, pero hecho con todo mi corazón.</p>
+      <button class="btn-main" onclick="openGift()">Descubrir 💛</button>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="main-content" class="hidden">
+
+      <!-- SECCIÓN DEDICADA A LOS CHICOS -->
+      <section class="card">
+        <h2 class="letter-title">Nosotros ♡</h2>
+        <div class="photo-item" style="max-width: 500px; margin: 0 auto;">
+          <img src="chicos.jpg" alt="Nosotros juntos" onerror="this.src='chicos.jfif'">
+          <p class="photo-caption">Dicen que hoy se regalan flores amarillas, pero yo quería darte algo que durara un poquito más. Porque entre tantas flores, yo tuve la suerte de encontrarte a ti ♡</p>
+        </div>
+      </section>
+
+      <!-- SECCIÓN DEDICADA AL RAMO DE KHIAN -->
+      <section class="card">
+        <h2 class="letter-title">Ramo Especial 💐</h2>
+        <div class="photo-item" style="max-width: 500px; margin: 0 auto;">
+          <img src="ramo_khian.jpg" alt="El ramo para Khian" onerror="this.src='ramo_khian.jfif'">
+          <p class="photo-caption">El ramo especial para mi Khian 💐</p>
+        </div>
+      </section>
+
+      <!-- CARTA PRINCIPAL -->
+      <section class="card">
+        <h2 class="letter-title">Mi amor:</h2>
+        <p class="letter-body">Hoy quería regalarte flores amarillas, pero terminé pensando que ninguna cantidad de flores podría explicar todo lo que siento por ti. 🌻
+
+Así que, aunque estas sean solo un pequeño detalle, quiero que cada una te recuerde cuánto me gusta tenerte en mi vida, cuánto disfruto quererte y lo feliz que me hace poder llamarte mi novio.
+
+Gracias por cada detalle, por cada palabra bonita y por hacerme sentir tan querido. Espero poder seguir llenando tus días de flores, abrazos y pequeños motivos para sonreír.
+
+Te amo muchísimo, mi cielo.</p>
+        <p class="letter-signature">Con amor,<br>Melkart. ♡</p>
+      </section>
+
+      <!-- SECCIÓN DE RAMO DE LIRIOS (SOLO UNA IMAGEN) -->
+      <section class="card">
+        <div class="photo-item" style="max-width: 500px; margin: 0 auto;">
+          <img src="lirios.jpg" alt="Ramo de lirios" onerror="this.src='lirios.jfif'">
+          <p class="photo-caption">Flores amarillas para iluminar tu día, así como tu sonrisa lo hace con el mío</p>
+        </div>
+      </section>
+
+      <!-- TRES APARTADOS -->
+      <section class="card">
+        <h2 class="letter-title" style="font-size: 2.2rem;">Lo que significas para mí ✨</h2>
+        <div class="three-reasons">
+          <div class="reason-box">
+            <h3>💛 Mi Calidez</h3>
+            <p>Llegas a mi vida como un rayito de sol, llenando cada rincón de luz y alegría dulce.</p>
+          </div>
+          <div class="reason-box">
+            <h3>🏡 Mi Hogar</h3>
+            <p>En tus abrazos encuentro la paz perfecta y el lugar donde siempre quiero quedarme.</p>
+          </div>
+          <div class="reason-box">
+            <h3>✨ Mi Felicidad</h3>
+            <p>Haces que los días simples se vuelvan recuerdos inolvidables con solo una sonrisa.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN TORTUGUITAS -->
+      <section class="card turtles-section">
+        <div class="turtle-icon">🐢💚🐢</div>
+        <h2 class="letter-title" style="font-size: 2.2rem; color: #3f6212;">Nuestro Rincón Especial</h2>
+        <p style="font-size: 1.05rem; color: #365314; line-height: 1.6;">
+          Un espacio dedicado a nuestras tortuguitas... caminando despacito, pero juntos y seguros en nuestro propio camino lleno de amor.
+        </p>
+      </section>
+
+      <!-- BOTÓN SEGUNDA CARTA -->
+      <section class="card" id="btn-secret-container">
+        <button class="btn-main" onclick="showSecret()">🌻 ¿Sabes qué es lo más bonito de estas flores?</button>
+      </section>
+
+      <!-- SEGUNDA CARTA (REVELACIÓN) -->
+      <section class="card secret-section" id="secret-card">
+        <p class="letter-body" style="text-align: center; font-size: 1.15rem; line-height: 2;">
+          Que no son lo más bonito que me ha pasado.<br>
+          <strong>Lo más bonito fue encontrarte a ti.</strong><br><br>
+          Y si algún día las flores se marchitan, quiero que recuerdes que lo que siento por ti no depende de ellas.<br><br>
+          Porque mi parte favorita de este día no es regalarte flores...<br>
+          <strong>es poder regalártelas a ti. 🌻</strong>
+        </p>
+        <p class="letter-signature" style="text-align: center; margin-top: 20px;">— Melkart, tu novio. ♡</p>
+        
+        <div class="final-decor">🌻 💛</div>
+        <h2 class="letter-title" style="font-size: 3rem; margin-top: 15px;">Te amo, Khian.</h2>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script>
+    function createPetals(count = 12) {
+      const container = document.getElementById('petals');
+      const petalTypes = ['💛', '🌻', '🍃'];
+      
+      for(let i = 0; i < count; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.innerText = petalTypes[Math.floor(Math.random() * petalTypes.length)];
+        petal.style.left = Math.random() * 95 + 'vw';
+        petal.style.animationDuration = (Math.random() * 6 + 8) + 's';
+        petal.style.animationDelay = (Math.random() * 6) + 's';
+        petal.style.fontSize = (Math.random() * 8 + 14) + 'px';
+        container.appendChild(petal);
+      }
+    }
+
+    function openGift() {
+      document.getElementById('hero').style.display = 'none';
+      document.getElementById('main-content').classList.remove('hidden');
+      createPetals(6);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showSecret() {
+      document.getElementById('btn-secret-container').style.display = 'none';
+      const secretCard = document.getElementById('secret-card');
+      secretCard.style.display = 'block';
+      secretCard.scrollIntoView({ behavior: 'smooth' });
+      createPetals(6);
+    }
+
+    createPetals(12);
+  </script>
+</body>
+</html>
